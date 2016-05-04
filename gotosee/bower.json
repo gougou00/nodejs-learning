@@ -1,0 +1,25 @@
+{
+  "name": "gotosee",
+  "homepage": "https://github.com/gougou00/nodejs-learning",
+  "authors": [
+    "GouGou00 <jerrychang4@163.com>"
+  ],
+  "description": "gotosee movie",
+  "main": "",
+  "keywords": [
+    "gotosee"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
