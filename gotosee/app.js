@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost/gotosee')
 app.set('views', './views/pages')
 app.set('view engine', 'jade')
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.static(path.join(__dirname, 'bower_components')))
+app.use(express.static(path.join(__dirname, 'public')))
 app.locals.moment = require('moment')
 app.listen(port)
 
