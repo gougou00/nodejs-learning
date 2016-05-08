@@ -3,6 +3,7 @@ var path = require('path')
 var mongoose = require('mongoose')
 var _ = require('underscore')
 var Movie = require('./models/movie')
+var User = require('./models/user')
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000
 var app = express()
@@ -28,6 +29,48 @@ app.get('/', function(req, res) {
 		res.render('index', {
 			title: 'gotosee 首页',
 			movies: movies
+		})
+	})
+})
+
+// signup
+app.post('/user/signup', function(req, res) {
+	var _user = req.body.user
+	
+
+	User.find({name: _user.name}, function(err, user) {
+		if (err) {
+			console.log(err)
+		}
+
+		if (user) {
+			return res.redirect('/')
+		}
+		else {
+			var user = new User(_user)
+			user.save(function(err, user) {
+				if (err) {
+					console.log(err)
+				}
+		
+				res.redirect('/admin/userlist')
+			})
+		}
+	})
+
+	
+})
+
+// userlist page
+app.get('/admin/userlist', function(req, res) {
+	User.fetch(function(err, users) {
+		if (err) {
+			console.log(err)
+		}
+		// 渲染
+		res.render('userlist', {
+			title: 'gotosee 用户列表页',
+			users: users
 		})
 	})
 })
